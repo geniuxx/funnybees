@@ -20,7 +20,7 @@ $db = new Db();
 $connection =  $db->getConnstring();
 
 $route = new Route; 
-$route->baseurl = '/apirest/v1/';  
+$route->baseurl = '/funnybees/v1/';  
 $route->method = $request_method;
 $router = new Router(array($route));
 

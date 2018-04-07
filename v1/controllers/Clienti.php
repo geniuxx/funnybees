@@ -1,12 +1,12 @@
 <?php
- 
+require_once ("models/clienti.php");
+
 class Clienti extends BaseController
 {
     public $modclienti;
 
     public function __construct()
-    {
-        require_once ("models/clienti.php");
+    {       
         $this->modclienti = new ModelClienti(); 
     }
 

@@ -1,14 +1,17 @@
 <?php
+
+require_once ("models/clienti.php");
+
 class Test extends BaseController {
 
     function test_get()
     { 
-        require_once ("models/clienti.php");
+        
         $modclienti = new ModelClienti(); 
 
         $data=array();
-        $data["cognome"]="Genio";
-        $data["nome"]="Claudio";
+        $data["firstname"]="Genio";
+        $data["lastname"]="Claudio";
         
         $data["clienti"] = $modclienti->all_clienti();
 

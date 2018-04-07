@@ -9,8 +9,8 @@ echo '
     <title>Document</title>
 </head>
 <body>
-    <h3>Cognome : <b>'.$cognome.'</b></h3>
-    <h3>Nome    : <b>'.$nome.'</b></h3>
+    <h3>Last  Name : <b>'.$lastname.'</b></h3>
+    <h3>First Name : <b>'.$firstname.'</b></h3>
     <hr>';
 
     foreach ($clienti as $cliente)

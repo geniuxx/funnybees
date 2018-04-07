@@ -1,9 +1,16 @@
 <?php
+/**
+ * BaseController
+ * 2018/04/07
+ * Claudio Genio
+ * 
+ */
 abstract class BaseController {
 
     public $_view;
     const HTTP200 = "HTTP/1.1 200 OK";
-
+    const HTTP404 = "HTTP/1.0 404 page not found";
+    
     public function __construct()
     {
         $this->_view = new Views;
@@ -13,20 +20,12 @@ abstract class BaseController {
     { 
         switch($arg1)
         {
-            case 'GET':  
-                $func = $arg2[0]."::".$arg2[0]."_get";                  
-                call_user_func (   
-                    $func,
-                    $arg2
-                );
+            case 'GET':                 
+                $this->call_func ( $arg2,"get");
                 break;
             
             case 'POST':
-                $func = $arg2[0]."::".$arg2[0]."_post";                  
-                call_user_func (   
-                    $func,
-                    $arg2
-                );
+                $this->call_func ( $arg2,"post");
                 break;
 
             default:
@@ -36,7 +35,15 @@ abstract class BaseController {
         }
 
     }
- 
+    private function call_func ($arg, $method) {
+        $func = $arg[0]."::".$arg[0]."_".$method;     
+                  
+        call_user_func (   
+            $func,
+            $arg
+        );
+    }
+
     function id ($arg, $endpoint){
         $id=null;
         if (count($arg)>1) {
