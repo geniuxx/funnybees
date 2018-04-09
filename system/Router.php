@@ -46,19 +46,27 @@ class Router
 
     private function dispatch($match, $method)
     { 
-        if($match) {
-            // chiama il metodo 'action'  della classe 'controller'
-            if (method_exists($match->params[0], "action")) {
-                call_user_func_array(   
-                                        array(new $match->params[0], "action"),
-                                        array($method, $match->params)
-                                    );
+        if (isset($match->params) &&  (count($match->params)>0)) {
+            if($match) {            
+                // chiama il metodo 'action'  della classe 'controller'
+                if (method_exists($match->params[0], "action")) {
+
+                    // TODO: call middleware 
+
+                    call_user_func_array(   
+                                            array(new $match->params[0], "action"),
+                                            array($method, $match->params)
+                                        );
+
+
+                } else {
+                    // Invalid Request Method
+                    header("HTTP/1.0 404 page not found");
+                }
             }
-            else
-            {
-                // Invalid Request Method
-                header("HTTP/1.0 404 page not found");
-            }
+        } else {
+            // Invalid Request Method
+            header("HTTP/1.0 404 page not found");
         }
     }
 }

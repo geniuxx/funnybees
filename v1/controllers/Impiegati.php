@@ -11,7 +11,7 @@ class Impiegati extends BaseController
 
         $response = "get_impiegati!!! ".$id;
         
-        $this->json_response ( json_encode($response),$this::HTTP200);
+        $this->json_response (json_encode($response),$this::HTTP200);
     }
 
     //
@@ -22,6 +22,6 @@ class Impiegati extends BaseController
 
         $response = "insert_impiegati!!! ";
         
-        $this->json_response ( json_encode($response),$this::HTTP200);
+        $this->json_response (json_encode($response),$this::HTTP200);
     }
 }

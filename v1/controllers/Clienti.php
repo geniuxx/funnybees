@@ -18,26 +18,24 @@ class Clienti extends BaseController
          
         $id = $this->id($arg,"clienti");
 
-        if ($id==null) {
+        if ($id == null) {
             $response = $this->modclienti->all_clienti();
-        }
-        else 
-        {
+        } else {
             $response = $this->modclienti->cliente($id);
         }
  
-        $this->json_response ( json_encode($response), $this::HTTP200);
+        $this->json_response (json_encode($response), $this::HTTP200);
     }
 
     //
     //
     function clienti_post($arg){
 
-        echo file_get_contents('php://input');
+        //echo file_get_contents('php://input');
                        
         $response = "clienti_post!!! "; 
 
-        $this->json_response ( json_encode($response), $this::HTTP200);
+        $this->json_response (json_encode($response), $this::HTTP200);
     }
    
 }

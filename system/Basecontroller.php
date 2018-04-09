@@ -8,6 +8,7 @@
 abstract class BaseController {
 
     public $_view;
+
     const HTTP200 = "HTTP/1.1 200 OK";
     const HTTP404 = "HTTP/1.0 404 page not found";
     
@@ -18,14 +19,13 @@ abstract class BaseController {
 
     function action($arg1, $arg2)
     { 
-        switch($arg1)
-        {
+        switch($arg1) {
             case 'GET':                 
-                $this->call_func ( $arg2,"get");
+                $this->call_func ($arg2,"get");
                 break;
             
             case 'POST':
-                $this->call_func ( $arg2,"post");
+                $this->call_func ($arg2,"post");
                 break;
 
             default:
@@ -33,8 +33,8 @@ abstract class BaseController {
                 header("HTTP/1.0 405 Method Not Allowed");
                 break;
         }
-
     }
+    
     private function call_func ($arg, $method) {
         $func = $arg[0]."::".$arg[0]."_".$method;     
                   
@@ -46,9 +46,10 @@ abstract class BaseController {
 
     function id ($arg, $endpoint){
         $id=null;
-        if (count($arg)>1) {
-            if ($arg[count($arg)-2]==$endpoint || $arg[count($arg)-2]=="id") {
-                $id = $arg[count($arg)-1];
+        if (count($arg) > 1) {
+            if ($arg[count($arg)-2] == $endpoint 
+                || $arg[count($arg)-2]=="id") {
+                    $id = $arg[count($arg)-1];
             }
         }
         
